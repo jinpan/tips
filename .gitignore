@@ -1,0 +1,14 @@
+# Database files
+db.sqlite3
+local_settings.py
+
+# Large Folders
+ENV/*
+
+# Binary files
+*pyc
+
+# temporary files
+*.swp
+*~
+
