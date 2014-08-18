@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils.timezone import now
 
@@ -26,6 +25,21 @@ class Tip(models.Model):
 
     def __unicode__(self):
         return u'<Tip: %s>' % (self.text, )
+
+
+    def to_json(self, string=False):
+        tags = [{'tag_id': tag.pk, 'text': tag.text}
+                for tag in self.tags]
+
+        return {
+            'featured': self.featured,
+            'text': self.text,
+            'url': self.url,
+            'image': self.image,
+            'author': self.author,
+            'tags': tags,
+            'submit_time': self.submit_time,
+        }
 
 
     def getVoteCount(self):
